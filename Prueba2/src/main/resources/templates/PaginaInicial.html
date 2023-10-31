@@ -24,6 +24,9 @@
                 <td th:text="${alumno.dni}"></td>
             </tr>
         </table>
+        <nav>
+            <ul class="pagination" sd:pagination="pager"></ul>
+        </nav>
         <p><a th:href="@{/nuevo}">Añadir Nuevo Alumno</a></p>
     </body>
 </html>

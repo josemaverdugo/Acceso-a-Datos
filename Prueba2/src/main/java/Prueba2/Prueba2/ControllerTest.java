@@ -4,8 +4,12 @@
  */
 package Prueba2.Prueba2;
 
+
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,8 +30,8 @@ public class ControllerTest {
         return "redirect:/Inicio";
     }
     @GetMapping("/Inicio")
-    public String listaPersonas(Model model) {
-        List<Alumno> alumnos = alumnorepository.findAll();
+    public String listaPersonas(Model model, @PageableDefault(size=5)Pageable p ) {
+        Page<Alumno> alumnos = alumnorepository.findAll(p);
         model.addAttribute("alumnos", alumnos);
         return "PaginaInicial";
     }
